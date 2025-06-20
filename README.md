@@ -1,16 +1,9 @@
-# proyecto_dispomoviles
+# Caregistry
 
-A new Flutter project.
+Caregistry es una aplicación que te permite administrar tus vehículos y guardar su información en una cuenta sincronizada en la nube.
 
-## Getting Started
+### ¿Cómo guardo los vehículos?
+Dentro de la app tendrá una lista con todos sus vehículos registrados con sus color, patente, marca, modelo y hasta kilómetros viajados. También se puede registrar la fecha de mantención de cada vehículo y hacer "tracking" para estar al tanto de los kilómetros usando GPS, en caso de que los km no cuadren con los del vehículo (Algunos tienen un contador) se pueden editar los vehículos y actualizarlos en caso de cualquier error.
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### ¿Qué pasa si no tengo acceso?
+El guardado de los vehículos es tanto local como en la nube, permitiendo revisar sus vehículos fuera de línea. Puede activar el auto guardado en la nube para así mantener sus vehículos actualizados en la nube, o puede hacerlo manualmente.
