@@ -1,17 +1,14 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
-import 'package:proyecto_dispomoviles/classes/vehicle.dart' as v;
-import 'package:proyecto_dispomoviles/classes/profile.dart' as p;
+import 'package:proyecto_dispomoviles/entity/vehicle.dart' as v;
+import 'package:proyecto_dispomoviles/entity/profile.dart' as p;
 import 'package:proyecto_dispomoviles/widgets/cards.dart';
 
 class CarInfoPage extends StatefulWidget {
-  const CarInfoPage({
-    super.key, 
-    required this.index, 
-    required this.editMode, 
-  });
+  const CarInfoPage({super.key, required this.index});
 
   final int index;
-  final bool editMode;
 
   @override
   State<CarInfoPage> createState() => _CarInfoPageState();
@@ -22,82 +19,73 @@ class _CarInfoPageState extends State<CarInfoPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Car Info"),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: <Widget>[
-            Container(
-              margin: EdgeInsets.only(bottom: 10),
-              width: double.maxFinite,
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.all(Radius.circular(8)),
-                border: Border.all(
-                  color: Colors.lightBlueAccent,
-                  width: 3,
-                )
+      body: SafeArea(
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.only(top: 40),
+                child: Container(
+                  margin: EdgeInsets.only(bottom: 10),
+                  width: 250, height: 250,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(8),
+                    border: Border.all(
+                      color: Colors.white,
+                      width: 3,
+                    )
+                  ),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(8),
+                    child: Image.file(
+                      File(v.vehicles[widget.index].getImgPath),
+                      fit: BoxFit.cover
+                      // image: AssetImage("assets/vehicles/${v.vehicles[widget.index].getImgPath}")
+                    ),
+                  ),
+                ),
               ),
-              child: Image(image: AssetImage("assets/vehicles/${v.vehicles[widget.index].getImgPath}")),
-            ),
-            Container(
-              padding: EdgeInsets.fromLTRB(30, 10, 30, 0),
-              child: Column(
-                children: [
-                  infoItem(p.myProfile.myVehicles[widget.index].getVIN, widget.editMode, widget.index),
-                  infoItem(p.myProfile.myVehicles[widget.index].getMarca, widget.editMode, widget.index),
-                  infoItem(p.myProfile.myVehicles[widget.index].getModelo, widget.editMode, widget.index),
-                  infoItem(p.myProfile.myVehicles[widget.index].getPatente, widget.editMode, widget.index),
-                  infoItem(p.myProfile.myVehicles[widget.index].getColor, widget.editMode, widget.index),
-                  infoItem("${p.myProfile.myVehicles[widget.index].getKm} km", widget.editMode, widget.index),
-                  infoItem("Año ${p.myProfile.myVehicles[widget.index].getAnio}", widget.editMode, widget.index),
-                ],
+              Padding(
+                padding: EdgeInsets.fromLTRB(30, 10, 30, 0),
+                child: Column(
+                  children: [
+                    infoItem(p.myProfile.myVehicles[widget.index].getVIN),
+                    Row(
+                      children: [
+                        Expanded(child: carInfoCard(p.myProfile.myVehicles[widget.index].getMarca)),
+                        Expanded(child: carInfoCard(p.myProfile.myVehicles[widget.index].getModelo)),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        Expanded(child: carInfoCard(p.myProfile.myVehicles[widget.index].getPatente)),
+                        Expanded(child: carInfoCard(p.myProfile.myVehicles[widget.index].getColor)),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        Expanded(child: carInfoCard("${p.myProfile.myVehicles[widget.index].getKm.toStringAsFixed(2)} km")),
+                        Expanded(child: carInfoCard("Año ${p.myProfile.myVehicles[widget.index].getAnio}")),
+                      ],
+                    ),
+                  ],
+                ),
               ),
-            )
-          ],
+              Padding(
+                padding: const EdgeInsets.only(top: 30),
+                child: TextButton(
+                  child: Text("Volver",
+                    style: TextStyle(fontSize: 30),
+                  ),
+                  onPressed: () => Navigator.pop(context), 
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
   }
-}
-
-Row infoItem(String info, bool editMode, int index) {
-  if (editMode) { return infoItemEdit(info, editMode, index); }
-  return infoItemNoEdit(info, editMode);
-}
-
-Row infoItemEdit(String info, bool editMode, int index) {
-  return Row(
-    mainAxisAlignment: MainAxisAlignment.center,
-    crossAxisAlignment: CrossAxisAlignment.start,
-    children: [
-      Expanded(
-        child: carInfoCard(info)
-      ),
-      Card(
-        margin: EdgeInsets.fromLTRB(0, 0, 0, 10),
-        elevation: 2.0,
-        child: IconButton(
-          color: Colors.white,
-          icon: Icon(Icons.edit),
-          onPressed: () {
-            
-          }, 
-        ),
-      )
-    ],
-  );
-}
-
-Row infoItemNoEdit(String info, bool editMode) {
-  return Row(
-    crossAxisAlignment: CrossAxisAlignment.start,
-    children: [
-      Expanded(
-        child: carInfoCard(info)
-      ),
-    ],
-  );
 }

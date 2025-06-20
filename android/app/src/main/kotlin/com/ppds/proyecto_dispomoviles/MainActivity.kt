@@ -1,4 +1,4 @@
-package com.example.proyecto_dispomoviles
+package com.ppds.proyecto_dispomoviles
 
 import io.flutter.embedding.android.FlutterActivity
 

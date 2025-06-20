@@ -22,48 +22,10 @@ BoxDecoration cardButtonBoxDecoration() {
   );
 }
 
-ThemeData defaultAppTheme() {
-  return ThemeData(
-    colorScheme: ColorScheme.fromSeed(seedColor: Colors.blueGrey[900]!),
-    appBarTheme: AppBarTheme(
-      color: Colors.blueGrey[900],
-      iconTheme: IconThemeData(
-        color: Colors.white
-      ),
-      titleTextStyle: TextStyle(
-        color: Colors.white,
-        fontSize: 25,
-      ),
-    ),
-    scaffoldBackgroundColor: Colors.blueGrey[700],
-    cardTheme: CardTheme(
-      color: Colors.blueGrey[900],
-    )
-  );
-}
-
-ThemeData blueAppTheme() {
-  return ThemeData(
-    colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue[900]!),
-    appBarTheme: AppBarTheme(
-      color: Colors.blue[900],
-      iconTheme: IconThemeData(),
-      titleTextStyle: TextStyle(),
-    ),
-    scaffoldBackgroundColor: Colors.blueGrey[700],
-    cardTheme: CardTheme()
-  );
-}
-
-ThemeData redAppTheme() {
-  return ThemeData(
-    colorScheme: ColorScheme.fromSeed(seedColor: Colors.red[900]!),
-    appBarTheme: AppBarTheme(
-      color: Colors.red[900],
-      iconTheme: IconThemeData(),
-      titleTextStyle: TextStyle(),
-    ),
-    scaffoldBackgroundColor: Colors.blueGrey[700],
-    cardTheme: CardTheme()
+InputDecoration addPageInputDecoration(String text) {
+  return InputDecoration(
+    border: OutlineInputBorder(),
+    floatingLabelAlignment: FloatingLabelAlignment.center,
+    labelText: text,
   );
 }

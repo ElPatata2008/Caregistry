@@ -18,3 +18,12 @@ Text textCarInfo(String info) {
 
   );
 }
+
+Text textTrackingMain(String text) {
+  return Text(
+    text,
+    style: TextStyle(
+      fontSize: 40
+    ),
+  );
+}
