@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:proyecto_dispomoviles/classes/vehicle.dart' as v;
+import 'package:proyecto_dispomoviles/classes/profile.dart' as p;
 import 'package:proyecto_dispomoviles/widgets/cards.dart';
 
 class CarInfoPage extends StatefulWidget {
@@ -45,11 +46,13 @@ class _CarInfoPageState extends State<CarInfoPage> {
               padding: EdgeInsets.fromLTRB(30, 10, 30, 0),
               child: Column(
                 children: [
-                  infoItem(v.vehicles[widget.index].getVIN, widget.editMode, widget.index),
-                  infoItem(v.vehicles[widget.index].getMarca, widget.editMode, widget.index),
-                  infoItem(v.vehicles[widget.index].getModelo, widget.editMode, widget.index),
-                  infoItem(v.vehicles[widget.index].getPatente, widget.editMode, widget.index),
-                  infoItem(v.vehicles[widget.index].getColor, widget.editMode, widget.index),
+                  infoItem(p.myProfile.myVehicles[widget.index].getVIN, widget.editMode, widget.index),
+                  infoItem(p.myProfile.myVehicles[widget.index].getMarca, widget.editMode, widget.index),
+                  infoItem(p.myProfile.myVehicles[widget.index].getModelo, widget.editMode, widget.index),
+                  infoItem(p.myProfile.myVehicles[widget.index].getPatente, widget.editMode, widget.index),
+                  infoItem(p.myProfile.myVehicles[widget.index].getColor, widget.editMode, widget.index),
+                  infoItem("${p.myProfile.myVehicles[widget.index].getKm} km", widget.editMode, widget.index),
+                  infoItem("Año ${p.myProfile.myVehicles[widget.index].getAnio}", widget.editMode, widget.index),
                 ],
               ),
             )
@@ -67,7 +70,8 @@ Row infoItem(String info, bool editMode, int index) {
 
 Row infoItemEdit(String info, bool editMode, int index) {
   return Row(
-    crossAxisAlignment: CrossAxisAlignment.center,
+    mainAxisAlignment: MainAxisAlignment.center,
+    crossAxisAlignment: CrossAxisAlignment.start,
     children: [
       Expanded(
         child: carInfoCard(info)
@@ -89,7 +93,7 @@ Row infoItemEdit(String info, bool editMode, int index) {
 
 Row infoItemNoEdit(String info, bool editMode) {
   return Row(
-    crossAxisAlignment: CrossAxisAlignment.center,
+    crossAxisAlignment: CrossAxisAlignment.start,
     children: [
       Expanded(
         child: carInfoCard(info)

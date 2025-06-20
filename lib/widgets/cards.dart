@@ -264,11 +264,14 @@ Card vehicleGridCardInfo(BuildContext context, int i, List<String> info) {
 Card carInfoCard(String info) {
   return Card(
     elevation: 2.0,
-    child: Text(info, 
-      textAlign: TextAlign.center,
-      textScaler: TextScaler.linear(1.5),
-      style: TextStyle(
-        color: Colors.white
+    child: Container(
+      margin: EdgeInsets.all(8),
+      child: Text(info, 
+        textAlign: TextAlign.center,
+        textScaler: TextScaler.linear(1.5),
+        style: TextStyle(
+          color: Colors.white
+        ),
       ),
     ),
   );

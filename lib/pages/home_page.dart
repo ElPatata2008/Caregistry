@@ -134,6 +134,22 @@ Widget profile(int themeValue, var ddCbTheme, int listMode, var ddCBListMode) {
           )
         ],
       ),
+      SizedBox(height: 10,),
+      Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Card(
+            child: TextButton(
+              child: Text("Añadir vehículo",
+                style: TextStyle(
+                  color: Colors.white
+                ),
+              ),
+              onPressed: (){}, 
+            ),
+          )
+        ],
+      )
     ],
   );
 }
@@ -162,14 +178,14 @@ ListView viewList(BuildContext context) {
     itemCount: p.myProfile.getMyVehicles.length,
     itemBuilder: (context, i) {
       return vehicleListViewCardInfo(context, i, [
-          v.vehicles[i].getImgPath, 
-          v.vehicles[i].getVIN, 
-          v.vehicles[i].getMarca, 
-          v.vehicles[i].getModelo, 
-          v.vehicles[i].getPatente, 
-          v.vehicles[i].getColor, 
-          v.vehicles[i].getKm.toString(), 
-          v.vehicles[i].getAnio.toString()
+          p.myProfile.myVehicles[i].getImgPath, 
+          p.myProfile.myVehicles[i].getVIN, 
+          p.myProfile.myVehicles[i].getMarca, 
+          p.myProfile.myVehicles[i].getModelo, 
+          p.myProfile.myVehicles[i].getPatente, 
+          p.myProfile.myVehicles[i].getColor, 
+          p.myProfile.myVehicles[i].getKm.toString(), 
+          p.myProfile.myVehicles[i].getAnio.toString()
         ]
       );
     }
@@ -186,14 +202,14 @@ GridView gridList(BuildContext context) {
     itemCount: p.myProfile.getMyVehicles.length,
     itemBuilder: (BuildContext context, int i) {
       return vehicleGridCardInfo(context, i, [
-          v.vehicles[i].getImgPath,
-          v.vehicles[i].getVIN,
-          v.vehicles[i].getMarca,
-          v.vehicles[i].getModelo,
-          v.vehicles[i].getPatente,
-          v.vehicles[i].getColor,
-          v.vehicles[i].getKm.toString(),
-          v.vehicles[i].getAnio.toString()
+          p.myProfile.myVehicles[i].getImgPath,
+          p.myProfile.myVehicles[i].getVIN,
+          p.myProfile.myVehicles[i].getMarca,
+          p.myProfile.myVehicles[i].getModelo,
+          p.myProfile.myVehicles[i].getPatente,
+          p.myProfile.myVehicles[i].getColor,
+          p.myProfile.myVehicles[i].getKm.toString(),
+          p.myProfile.myVehicles[i].getAnio.toString()
         ]
       );
     },
